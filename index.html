@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090d">
+<title>CART3R FITNESS — Exercise Studio</title>
+<style>
+:root{--bg:#09090d;--panel:#15151d;--panel2:#1c1c26;--line:#30303c;--red:#d92740;--red2:#ff596d;--muted:#a5a5b2;--white:#f7f7fa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#34121a 0,transparent 48%),var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;min-height:100vh}
+header{max-width:1120px;margin:auto;padding:24px 22px 14px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-size:22px;font-weight:900;letter-spacing:1.5px}.brand span{color:var(--red2)}.sub{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:5px}
+.status{font-size:11px;color:#83e5aa;background:#153323;padding:8px 12px;border-radius:30px}
+main{max-width:1120px;margin:auto;padding:12px 22px 50px}.hero{background:linear-gradient(120deg,#281018,#17151d 65%);border:1px solid #5a2631;border-radius:18px;padding:23px;margin-bottom:22px}.eyebrow{color:var(--red2);font-size:11px;font-weight:800;letter-spacing:2px}.hero h1{font-size:clamp(25px,5vw,42px);margin:10px 0}.hero p{color:#c0bdc6;max-width:650px;line-height:1.6;margin:0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.stat{background:#0e0e14aa;border:1px solid #44303a;border-radius:12px;padding:12px}.stat b{display:block;font-size:23px}.stat small{color:var(--muted)}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:24px 0 12px}.section-title h2{font-size:15px;letter-spacing:1.2px;margin:0}.section-title span{color:var(--muted);font-size:12px}
+.parts{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.part{border:1px solid var(--line);background:var(--panel);color:var(--white);border-radius:12px;padding:15px 7px;cursor:pointer;transition:.18s}.part:hover,.part.active{border-color:var(--red2);background:#39151e;transform:translateY(-2px)}.part .ico{font-size:25px;display:block;margin-bottom:7px}.part strong{font-size:12px}
+.filters{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:10px;margin:12px 0}input,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--white);padding:12px;border-radius:10px;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--red2)}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:15px}.list{display:grid;gap:9px;align-content:start}.exercise{width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--white);padding:14px;cursor:pointer}.exercise:hover,.exercise.active{border-color:var(--red2);background:#26151b}.exercise strong{display:block;margin-bottom:6px}.meta{font-size:11px;color:var(--muted)}.detail,.box{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px}.art{height:210px;background:radial-gradient(ellipse,#38323d,#1b1b24 72%);border-radius:12px;display:grid;place-items:center;margin:12px 0}.art svg{width:100%;height:100%;max-height:205px}.detail h3{margin:10px 0 5px;font-size:21px}.detail p,.muted{color:var(--muted);font-size:13px;line-height:1.55}.twostats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:13px 0}.mini{background:var(--panel2);padding:11px;border-radius:10px}.mini small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}.mini b{font-size:15px}
+ol{padding-left:20px;color:#c6c4ce;font-size:13px;line-height:1.8}.btn{border:0;border-radius:10px;background:var(--red);color:white;padding:12px 15px;font-weight:800;cursor:pointer}.btn:hover{background:#ed3c54}.btn.secondary{background:#292934;border:1px solid #41414e}.btn.full{width:100%;margin-top:10px}.saved-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:10px 0;font-size:13px}.saved-row:last-child{border:0}.timer{text-align:center;font-size:44px;font-weight:900;letter-spacing:2px;margin:8px}.timer-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.timer-controls button{padding:9px 14px}.empty{padding:18px;text-align:center;color:var(--muted);font-size:13px}
+footer{text-align:center;color:#777784;font-size:11px;margin-top:30px;letter-spacing:1px}
+@media(max-width:760px){.parts{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}header{padding:18px 15px}main{padding:10px 15px 35px}.hero{padding:18px}.stats{gap:7px}.stat{padding:9px}.stat b{font-size:20px}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">CART3R <span>FITNESS</span></div><div class="sub">EXERCISE STUDIO · V2.0</div></div><div class="status">● ONLINE</div></header>
+<main>
+<section class="hero"><div class="eyebrow">YOUR TRAINING WORKSPACE</div><h1>Antrenamentul tău.<br>Organizat mai bine.</h1><p>Alege grupa musculară, descoperă exerciții, vezi demonstrațiile ilustrate și construiește-ți propriul antrenament.</p>
+<div class="stats"><div class="stat"><b id="count">0</b><small>Exerciții salvate</small></div><div class="stat"><b id="groups">0</b><small>Grupe musculare</small></div><div class="stat"><b id="clockStat">01:30</b><small>Cronometru pauză</small></div></div></section>
+<div class="section-title"><h2>01 / ALEGE GRUPA MUSCULARĂ</h2><span>SELECT BODY PART</span></div>
+<div class="parts" id="parts"></div>
+<div class="section-title"><h2>02 / BIBLIOTECA DE EXERCIȚII</h2><span id="total">0 exerciții</span></div>
+<div class="filters"><input id="search" placeholder="⌕  Caută un exercițiu..."><select id="equipment"><option value="all">Tot echipamentul</option><option value="body">Fără echipament</option><option value="dumbbell">Gantere</option><option value="bar">Bară</option><option value="cable">Cabluri</option></select><select id="level"><option value="all">Toate nivelurile</option><option>Începător</option><option>Intermediar</option></select></div>
+<div class="layout"><div class="list" id="exerciseList"></div>
+<section class="detail"><div class="eyebrow">03 / DEMONSTRAȚIE</div><div class="art" id="demo"><span class="muted">Alege un exercițiu din listă</span></div><div class="meta" id="levelLabel">EXERCIȚIU NEELECTAT</div><h3 id="exTitle">Demonstrație exercițiu</h3><p id="description">Aici vei vedea explicația și pașii de execuție.</p><div class="twostats"><div class="mini"><small>SETURI ORIENTATIVE</small><b id="sets">—</b></div><div class="mini"><small>REPETĂRI / DURATĂ</small><b id="reps">—</b></div></div><b style="font-size:12px;letter-spacing:1px">TEHNICĂ DE EXECUȚIE</b><ol id="steps"><li>Selectează un exercițiu pentru instrucțiuni.</li></ol><button class="btn full" id="add">＋ ADAUGĂ LA ANTRENAMENT</button></section></div>
+<div class="section-title"><h2>04 / ANTRENAMENTUL MEU</h2><span id="savedCount">0 exerciții</span></div><section class="box"><div id="saved"><div class="empty">Nu ai adăugat exerciții încă.</div></div><button class="btn secondary full" id="clear">Golește lista</button></section>
+<div class="section-title"><h2>05 / REST TIMER</h2><span>CRONOMETRU DE PAUZĂ</span></div><section class="box"><div class="timer" id="timer">01:30</div><div class="timer-controls"><button class="btn secondary" data-time="30">30 sec</button><button class="btn secondary" data-time="60">60 sec</button><button class="btn secondary" data-time="90">90 sec</button><button class="btn secondary" data-time="120">120 sec</button></div><div class="timer-controls" style="margin-top:12px"><button class="btn" id="start">START</button><button class="btn secondary" id="reset">RESET</button></div></section>
+<footer>CART3R FITNESS · MOVE WITH CONTROL · BUILD GOOD HABITS</footer>
+</main>
+<script>
+const exercises=[
+['Spate','body','Începător','Bird Dog','Menține spatele neutru și întinde brațul și piciorul opus.','2','6–10 / parte',['Pornește în patru labe.','Întinde brațul și piciorul opus.','Revino controlat și schimbă partea.'],'back'],
+['Spate','bar','Intermediar','Ramat cu bara','Folosește o greutate ușoară și păstrează trunchiul stabil.','2','8–12',['Apleacă ușor trunchiul.','Trage bara spre abdomen.','Coboară controlat.'],'back'],
+['Spate','dumbbell','Începător','Ramat cu gantera','Sprijină o mână pe o bancă și trage gantera controlat.','2','8–12 / parte',['Sprijină o mână pe bancă.','Trage cotul spre spate.','Coboară lent.'],'back'],
+['Spate','body','Începător','Superman','Ridică ușor brațele și picioarele fără să forțezi zona lombară.','2','8–10',['Stai întins pe abdomen.','Ridică ușor membrele.','Revino la sol.'],'back'],
+['Abdomen','body','Începător','Plank','Păstrează corpul aliniat și respiră normal.','2','15–30 sec',['Sprijină-te pe antebrațe.','Ține corpul drept.','Respiră constant.'],'floor'],
+['Abdomen','body','Începător','Dead Bug','Mișcă lent brațul și piciorul opus, păstrând controlul trunchiului.','2','8–10 / parte',['Stai pe spate cu brațele ridicate.','Întinde membrele opuse.','Revino și schimbă partea.'],'floor'],
+['Abdomen','body','Începător','Crunch','Ridică ușor umerii, fără să tragi de gât.','2','8–12',['Stai pe spate cu genunchii îndoiți.','Ridică ușor umerii.','Coboară lent.'],'floor'],
+['Antebraț','dumbbell','Începător','Wrist Curl','Mișcă încheietura controlat, cu antebrațul sprijinit.','2','10–12',['Sprijină antebrațul.','Ridică ușor palma.','Coboară controlat.'],'arms'],
+['Antebraț','dumbbell','Începător','Reverse Wrist Curl','Folosește rezistență mică și mișcă doar încheietura.','2','10–12',['Sprijină antebrațul cu palma în jos.','Ridică dosul palmei.','Revino lent.'],'arms'],
+['Antebraț','dumbbell','Începător','Farmer Carry','Mergi cu postură dreaptă și greutăți ușoare.','2','15–20 sec',['Ține ganterele pe lângă corp.','Stai drept.','Mergi controlat.'],'arms'],
+['Piept','body','Începător','Flotări la perete','O variantă simplă pentru învățarea mișcării.','2','8–12',['Pune palmele pe perete.','Îndoaie coatele.','Împinge înapoi.'],'push'],
+['Piept','body','Începător','Flotări înclinate','Sprijină mâinile pe o suprafață stabilă.','2','6–12',['Pune mâinile pe suport stabil.','Coboară pieptul controlat.','Împinge înapoi.'],'push'],
+['Umeri','body','Începător','Shoulder Taps','Menține trunchiul stabil când atingi umărul opus.','2','8 / parte',['Pornește în poziție de planșă.','Atinge umărul opus.','Alternează lent.'],'arms'],
+['Umeri','dumbbell','Începător','Lateral Raise','Ridică brațele lateral cu rezistență redusă.','2','8–12',['Stai drept cu ganterele.','Ridică brațele lateral.','Coboară lent.'],'arms'],
+['Picioare','body','Începător','Squat','Execută genuflexiunea într-o amplitudine confortabilă.','2','8–12',['Stai cu picioarele depărtate.','Împinge șoldurile înapoi.','Revino în picioare.'],'legs'],
+['Picioare','body','Începător','Reverse Lunge','Fă un pas în spate și menține echilibrul.','2','8 / parte',['Stai drept.','Fă un pas în spate.','Revino și schimbă piciorul.'],'legs']
+];
+const parts=[['Spate','↗'],['Abdomen','◈'],['Antebraț','✊'],['Piept','◇'],['Umeri','⬡'],['Picioare','▥']];
+let activePart='Spate',selected=null,saved=[],duration=90,left=90,interval=null;
+const $=id=>document.getElementById(id);
+function renderParts(){$('parts').innerHTML=parts.map(([p,ico])=>`<button class="part ${p===activePart?'active':''}" data-part="${p}"><span class="ico">${ico}</span><strong>${p}</strong></button>`).join('')}
+function renderList(){let q=$('search').value.toLowerCase(),eq=$('equipment').value,lv=$('level').value;let arr=exercises.filter(x=>x[0]===activePart&&x[3].toLowerCase().includes(q)&&(eq==='all'||x[1]===eq)&&(lv==='all'||x[2]===lv));$('total').textContent=arr.length+' exerciții';$('exerciseList').innerHTML=arr.length?arr.map(x=>`<button class="exercise ${selected===x?'active':''}" data-ex="${exercises.indexOf(x)}"><strong>${x[3]}</strong><span class="meta">${x[1]==='body'?'Fără echipament':x[1]==='dumbbell'?'Gantere':x[1]==='bar'?'Bară':'Cabluri'} · ${x[2]}</span></button>`).join(''):'<div class="empty">Nu am găsit exerciții pentru filtrele alese.</div>'}
+function svg(type){let shapes={back:'<circle cx="150" cy="35" r="16"/><path d="M130 55 Q150 48 170 55 L180 110 L165 130 L165 175 L135 175 L135 130 L120 110Z M130 65 L95 105 L80 125 M170 65 L205 105 L220 125 M140 175 L132 225 M160 175 L168 225"/>',floor:'<circle cx="55" cy="83" r="12"/><path d="M68 92 L170 105 L215 145 M105 99 L82 140 M168 105 L150 140 M170 105 L195 80"/>',arms:'<circle cx="150" cy="30" r="15"/><path d="M130 50 L170 50 L180 125 L165 150 L135 150 L120 125Z M130 65 L95 105 L80 145 M170 65 L205 105 L220 145 M140 150 L130 220 M160 150 L170 220"/>',push:'<circle cx="65" cy="72" r="12"/><path d="M80 83 L145 115 L195 105 M105 95 L155 145 M145 115 L115 170"/>',legs:'<circle cx="130" cy="30" r="13"/><path d="M130 45 L130 110 L95 145 L78 215 M130 110 L165 145 L200 215 M130 65 L95 90 M130 65 L165 90"/>'};return `<svg viewBox="0 0 300 250" role="img" aria-label="Ilustrație schematică a poziției pentru exercițiu"><g fill="#d8d5df" stroke="#d8d5df" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">${shapes[type]}</g><path d="M25 230H275" stroke="#ff596d" stroke-width="3"/></svg>`}
+function renderDetail(){if(!selected)return;$('demo').innerHTML=svg(selected[8]);$('exTitle').textContent=selected[3];$('levelLabel').textContent=selected[2].toUpperCase();$('description').textContent=selected[4];$('sets').textContent=selected[5];$('reps').textContent=selected[6];$('steps').innerHTML=selected[7].map(s=>`<li>${s}</li>`).join('')}
+function renderSaved(){$('savedCount').textContent=saved.length+' exerciții';$('count').textContent=saved.length;$('groups').textContent=new Set(saved.map(x=>x[0])).size;$('saved').innerHTML=saved.length?saved.map((x,i)=>`<div class="saved-row"><span><b>${x[3]}</b><br><span class="meta">${x[0]} · ${x[5]} seturi · ${x[6]}</span></span><button class="btn secondary" data-remove="${i}">Elimină</button></div>`).join(''):'<div class="empty">Nu ai adăugat exerciții încă.</div>'}
+function showTimer(){$('timer').textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');$('clockStat').textContent=$('timer').textContent}
+$('parts').addEventListener('click',e=>{let b=e.target.closest('[data-part]');if(!b)return;activePart=b.dataset.part;selected=null;renderParts();renderList()});
+$('exerciseList').addEventListener('click',e=>{let b=e.target.closest('[data-ex]');if(!b)return;selected=exercises[+b.dataset.ex];renderList();renderDetail()});
+$('saved').addEventListener('click',e=>{let b=e.target.closest('[data-remove]');if(!b)return;saved.splice(+b.dataset.remove,1);renderSaved()});
+['search','equipment','level'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',renderList));
+$('add').onclick=()=>{if(selected&&!saved.includes(selected)){saved.push(selected);renderSaved()}};
+$('clear').onclick=()=>{saved=[];renderSaved()};
+document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{duration=+b.dataset.time;left=duration;showTimer()});
+$('start').onclick=()=>{if(interval){clearInterval(interval);interval=null;$('start').textContent='CONTINUĂ';return}if(left===0)left=duration;interval=setInterval(()=>{left=Math.max(0,left-1);showTimer();if(!left){clearInterval(interval);interval=null;$('start').textContent='PAUZĂ TERMINATĂ'}},1000);$('start').textContent='PAUZĂ'};
+$('reset').onclick=()=>{clearInterval(interval);interval=null;left=duration;$('start').textContent='START';showTimer()};
+renderParts();renderList();renderSaved();showTimer();
+</script>
+</body>
+</html>
